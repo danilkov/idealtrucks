@@ -1,0 +1,10 @@
+{
+  "SIGN_IN_ID": "Sign in",
+  "SIGN_UP_ID": "Sign up",
+  "ACCOUNT_ID": "Account",
+  "LOGOUT_ID": "Logout",
+  "NAME_ID": "Name",
+  "EMAIL_ID": "Email",
+  "PASSWORD_ID": "Password",
+  "PASSWORD_CONFIRM_ID": "Confirm password"
+}

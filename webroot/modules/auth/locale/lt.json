@@ -1,0 +1,10 @@
+{
+  "SIGN_IN_ID": "Prisijungti",
+  "SIGN_UP_ID": "Užsiregistruoti",
+  "ACCOUNT_ID": "Account",
+  "LOGOUT_ID": "Atsijungti",
+  "NAME_ID": "Vardas",
+  "EMAIL_ID": "Elektroninis paštas",
+  "PASSWORD_ID": "Slaptažodis",
+  "PASSWORD_CONFIRM_ID": "Patvirtinti slaptažodį"
+}

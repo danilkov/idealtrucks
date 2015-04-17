@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Vehicle details
+            </div>
+            <div class="panel-body" data-ng-hide="vehicle != null || error != null">
+                <p>Fetching data...</p>
+            </div>
+            <div class="panel-body ng-hide" data-ng-show="vehicle">
+                <span>{{vehicle.brand}}</span> <span>{{vehicle.type}}</span>, <span data-ng-show="vehicle.mileage">{{vehicle.mileage}}</span>
+                <div>
+                    <span>{{vehicle.description}}</span>
+                </div>
+            </div>
+            <div class="panel-body ng-hide" data-ng-show="error">
+                <p>{{error.error}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "SIGN_IN_ID": "Вход",
+  "SIGN_UP_ID": "Регистрация",
+  "ACCOUNT_ID": "Учётная запись",
+  "LOGOUT_ID": "Выход",
+  "NAME_ID": "Имя",
+  "EMAIL_ID": "Почтовый ящик",
+  "PASSWORD_ID": "Пароль",
+  "PASSWORD_CONFIRM_ID": "Повторите пароль"
+}

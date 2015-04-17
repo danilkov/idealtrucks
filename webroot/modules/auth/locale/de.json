@@ -1,0 +1,10 @@
+{
+  "SIGN_IN_ID": "Einloggen",
+  "SIGN_UP_ID": "Anheuern",
+  "ACCOUNT_ID": "Benutzerkonto",
+  "LOGOUT_ID": "Abmelden",
+  "NAME_ID": "Name",
+  "EMAIL_ID": "Email",
+  "PASSWORD_ID": "Passwort",
+  "PASSWORD_CONFIRM_ID": "Passwort bestätigen"
+}
