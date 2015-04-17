@@ -66,7 +66,7 @@ class APIController extends AppController {
         parent::afterFilter($event);
 
         if($this->payload != null) {
-            $this->generateToken(/*$payload's user data*/);
+            $this->generateToken($this->payload->user);
         }
     }
 

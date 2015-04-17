@@ -28,19 +28,19 @@ class AuthController extends APIController {
 
     public function signin() {
         // if sign-in successful
-        $this->generateToken(); // TODO: add some account information
+        $this->generateToken('Blah'); // TODO: add some account information
         $this->setResponseValue('account', '{}'); // TODO: return the account from the database
     }
 
     public function signup() {
         // if sign-up successful
-        $this->generateToken(); // TODO: add some account information
+        $this->generateToken('Blah'); // TODO: add some account information
         $this->setResponseValue('account', '{}'); // TODO: return the account from the database
     }
 
     public function tokenRefresh() {
         if($this->getTokenPayload() != null) { // The token has been provided and is valid
-            $this->generateToken();            // Create new token. TODO: use the payload data
+            $this->generateToken($this->getTokenPayload()->user);            // Create new token. TODO: use the payload data
             $this->setResponseValue('status', 'ok');
         }
         else {
