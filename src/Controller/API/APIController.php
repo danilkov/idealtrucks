@@ -46,8 +46,6 @@ class APIController extends AppController {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
 
-        $action = $this->request->param('action');
-
         $authHeader = $this->request->header('Authorization');
         if(!empty($authHeader) && 'Bearer ' === substr($authHeader, 0, 7)) {
             $token = substr($authHeader, 7);
@@ -58,26 +56,26 @@ class APIController extends AppController {
                     $jit = Cache::read($key, $config = 'jit');
                     if($jit != null) {
                         //Cache::delete($key, $config = 'jit');
-                        $this->payload = $payload;
+                        $this->setUser($payload->user);
+                        $this->setPaymentPlan($payload->plan);
                     }
                 }
             }
             catch(Exception $e) {
-//                $this->payload = null;
                 throw new UnauthorizedException('Invalid token');
             }
-//            if($this->payload == null) {
-//                throw new UnauthorizedException('Invalid token');
-//            }
+            if(!$this->isActionAllowed($this->request->param('action'), $this->getUserId(), $this->getPaymentPlan())) {
+                throw new UnauthorizedException('Access denied');
+            }
+            $this->generateToken(); // Generate new token
         }
     }
 
-    public function afterFilter(Event $event) {
-        $this->generateToken(null);
-        parent::afterFilter($event);
+    protected function isActionAllowed($action, $userId, $paymentPlan) {  // override in subclasses
+        return true;
     }
 
-    public function notImplemented() {
+    protected function notImplemented() {
         $this->response->statusCode(501);
         $this->setResponseValue('error', new Error('Not Implemented'));
     }
@@ -87,29 +85,25 @@ class APIController extends AppController {
         $this->set('_serialize', array($name));
     }
 
-    protected final function generateToken($userId) {
-        if($userId == null) {
-            $userId = $this->getUserId();
-            if($userId == null) {
-                return;
-            }
+    protected final function generateToken() {
+        if($this->getUserId() == null) {
+            return;
         }
 
         $isStrong = false;
         $jit = bin2hex(openssl_random_pseudo_bytes(16, $isStrong));
-        // TODO: Cache $userId/$jit for 30 minutes
         Cache::write($userId . '_' . $jit, $jit, $config = 'jit');
 
         $now = time();
         $payload = array(
             "iss" => "issuer, get the hostname or smth",
-            "issto" => $this->request->clientIp(),
+            //"issto" => $this->request->clientIp(),
             "iat" => $now,
             "nbf" => $now,
             "exp" => $now + 1800, // 30min, make configurable?
             "jit" => $jit,
-            "user" => $userId,
-            "tier" => "free"
+            "user" => $this->getUserId(),
+            "plan" => $this->getPaymentPlan()
         );
 
         $token = JWT::encode($payload, Security::salt(), 'HS512'); // TODO: get the key, not the salt.
@@ -118,11 +112,21 @@ class APIController extends AppController {
     }
 
     protected final function getUserId() {
-        if($this->payload != null) {
-            return $this->payload->user;
-        }
-        return null;
+        return $this->userId;
     }
 
-    private $payload;
+    protected final function setUserId(&userId) {
+        $this->userId = $userId;
+    }
+
+    protected final function getPaymentPlan() {
+        return $this->paymentPlan;
+    }
+
+    protected final function setPaymentPlan(&paymentPlan) {
+        $this->paymentPlan = $paymentPlan;
+    }
+
+    private $userId;
+    private $paymentPlan;
 }

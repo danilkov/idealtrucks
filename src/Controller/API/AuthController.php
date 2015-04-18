@@ -28,24 +28,28 @@ class AuthController extends APIController {
 
     public function signin() {
         // if sign-in successful
-        $this->generateToken('Blah'); // TODO: add some account information
+        $this->setUserId('Blah');
+        $this->setPaymentPLan('Free');
+        $this->generateToken();
         $this->setResponseValue('account', '{}'); // TODO: return the account from the database
     }
 
     public function signup() {
         // if sign-up successful
-        $this->generateToken('Blah'); // TODO: add some account information
+        $this->setUserId('Blah');
+        $this->setPaymentPLan('Free');
+        $this->generateToken();
         $this->setResponseValue('account', '{}'); // TODO: return the account from the database
     }
 
     public function tokenRefresh() {
         if($this->getUserId() != null) { // The token has been provided and is valid
-            $this->generateToken(null);            // Create new token. TODO: use the payload data
+            $this->generateToken();            // Create new token. TODO: use the payload data
             $this->setResponseValue('status', 'ok');
         }
         else {
             $this->response->statusCode(401);
-            $this->setResponseValue('error', 'not_authorized');
+            $this->setResponseValue('error', 'Access denied');
         }
     }
 }
