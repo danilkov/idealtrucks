@@ -35,9 +35,9 @@
             return claims;
         }
 
-        function isTokenValid(graceTime) {
+        function isTokenValid() {
             if (localStorage.token != null && $rootScope.tokenClaims != null &&
-                new Date().getTime() <= ($rootScope.tokenClaims.exp - graceTime) * 1000) {
+                new Date().getTime() <= ($rootScope.tokenClaims.exp) * 1000) {
                 return true;
             }
             return false;
@@ -48,7 +48,7 @@
                 localStorage.token = token;
                 $rootScope.tokenClaims = getTokenClaims(token);
                 $rootScope.token = token;
-                if(isTokenValid(0)) {
+                if(isTokenValid()) {
                     return;
                 }
             }
@@ -58,22 +58,23 @@
         };
 
         this.getToken = function() {
-            if (isTokenValid(0)) {
+            if (isTokenValid()) {
                 return localStorage.token;
             }
             this.setToken(null);
             return null;
         };
 
-        this.getTokenForRefresh = function(graceTime) {
-            if (isTokenValid(graceTime)) {
-                return localStorage.token;
-            }
-            return null;
-        };
-
         this.hasPermission = function(resource) {
             // TODO: implement
+            return false;
+        };
+
+        this.needsRefresh = function(age) {
+            if (localStorage.token != null && $rootScope.tokenClaims != null &&
+                new Date().getTime() >= $rootScope.tokenClaims.iat * 1000 + age) {
+                return true;
+            }
             return false;
         };
     }]).

@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use App\Model\Behavior\Error;
+use Cake\Cache\Cache;
 use Cake\Event\Event;
 use Cake\Network\Exception\UnauthorizedException;
 use Cake\Utility\Security;
@@ -45,7 +46,7 @@ class APIController extends AppController {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
 
-        $this->$request->params['action'];
+        $this->request->param('action');
 
         $authHeader = $this->request->header('Authorization');
         if(!empty($authHeader) && 'Bearer ' === substr($authHeader, 0, 7)) {
@@ -53,21 +54,28 @@ class APIController extends AppController {
             try {
                 $payload = JWT::decode($token, Security::salt(), array('HS512')); // TODO: get the key, not the salt.
                 // TODO: verify $payload's jit
-                $this->payload = $payload;
+                if($payload != null && $payload->user != null && $payload->jit != null) {
+                    $key = $payload->user . '_' . $payload->jit;
+                    $jit = Cache::read($key, $config = 'jit');
+                    if($jit != null) {
+                        Cache::delete($key, $config = 'jit');
+                        $this->payload = $payload;
+                    }
+                }
             }
             catch(Exception $e) {
 //                $this->payload = null;
+                throw new UnauthorizedException('Invalid token');
+            }
+            if($this->payload == null) {
                 throw new UnauthorizedException('Invalid token');
             }
         }
     }
 
     public function afterFilter(Event $event) {
+        $this->generateToken(null);
         parent::afterFilter($event);
-
-        if($this->payload != null) {
-            $this->generateToken($this->payload->user);
-        }
     }
 
     public function notImplemented() {
@@ -81,17 +89,26 @@ class APIController extends AppController {
     }
 
     protected final function generateToken($userId) {
-        $now = time();
+        if($userId == null) {
+            $userId = $this->getUserId();
+            if($userId == null) {
+                return;
+            }
+        }
+
         $isStrong = false;
+        $jit = bin2hex(openssl_random_pseudo_bytes(16, $isStrong));
+        // TODO: Cache $userId/$jit for 30 minutes
+        Cache::write($userId . '_' . $jit, $jit, $config = 'jit');
+
+        $now = time();
         $payload = array(
             "iss" => "issuer, get the hostname or smth",
             "iat" => $now,
             "nbf" => $now,
             "exp" => $now + 1800, // 30min, make configurable?
-            "jit" => 1, // TODO: use the jit only once, reissue the token with the new jit
+            "jit" => $jit,
             "user" => $userId,
-            "test" => bin2hex(openssl_random_pseudo_bytes(32, $isStrong)),
-            "test-strong" => $isStrong,
             "tier" => "free"
         );
 
@@ -100,8 +117,11 @@ class APIController extends AppController {
         return $token;
     }
 
-    protected final function getTokenPayload() {
-        return $this->payload;
+    protected final function getUserId() {
+        if($this->payload != null) {
+            return $this->payload->user;
+        }
+        return null;
     }
 
     private $payload;

@@ -39,8 +39,8 @@ class AuthController extends APIController {
     }
 
     public function tokenRefresh() {
-        if($this->getTokenPayload() != null) { // The token has been provided and is valid
-            $this->generateToken($this->getTokenPayload()->user);            // Create new token. TODO: use the payload data
+        if($this->getUserId() != null) { // The token has been provided and is valid
+            $this->generateToken(null);            // Create new token. TODO: use the payload data
             $this->setResponseValue('status', 'ok');
         }
         else {

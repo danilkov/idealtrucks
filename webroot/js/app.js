@@ -39,6 +39,13 @@
                 redirectTo: '/'
             });
         $httpProvider.interceptors.push(['$q', '$location', '$rootScope', 'TokenService', function ($q, $location, $rootScope, tokenService) {
+            function extractToken(response) {
+                var token = response.headers('X-JWT-Token');
+                if(token) {
+                    tokenService.setToken(token);
+                }
+            }
+            
             return {
                 'request': function (config) {
                     config.headers = config.headers || {};
@@ -50,10 +57,7 @@
                 },
                 'response': function (response) {
                     if(response.status === 200) {
-                        var token = response.headers('X-JWT-Token');
-                        if(token) {
-                            tokenService.setToken(token);
-                        }
+                        extractToken(response);
                     }
                     return response;
                 },
@@ -61,6 +65,9 @@
                     if (response.status === 401 || response.status === 403) {
                         tokenService.setToken(null);
                         $location.path('/signin');
+                    }
+                    else {
+                        extractToken(response);
                     }
                     return $q.reject(response);
                 }
