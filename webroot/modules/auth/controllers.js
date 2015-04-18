@@ -17,20 +17,20 @@
         }
 
         function refreshToken() {
-            if (tokenService.needsRefresh(300000)) {
+            if (tokenService.needsRefresh(60000)) {
                 var token = tokenService.getToken();
                 if (token) {
                     authService.refresh(function (res) {
                         //tokenService.setToken(res.token);
                     }, function () {
-                        //tokenService.setToken(null);
+                        tokenService.setToken(null);
                     });
                 }
             }
         }
 
         if(!$rootScope.tokenRefreshPromise) { // FIXME: Looks like it's not firing when the browser is minimized, try setInterval
-            $rootScope.tokenRefreshPromise = $interval(refreshToken, 300000); // verify the token every 5 minutes
+            $rootScope.tokenRefreshPromise = $interval(refreshToken, 30000); // verify the token every 30 seconds
         }
 
         $translatePartialLoader.addPart('auth');

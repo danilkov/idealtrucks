@@ -46,19 +46,18 @@ class APIController extends AppController {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
 
-        $this->request->param('action');
+        $action = $this->request->param('action');
 
         $authHeader = $this->request->header('Authorization');
         if(!empty($authHeader) && 'Bearer ' === substr($authHeader, 0, 7)) {
             $token = substr($authHeader, 7);
             try {
                 $payload = JWT::decode($token, Security::salt(), array('HS512')); // TODO: get the key, not the salt.
-                // TODO: verify $payload's jit
                 if($payload != null && $payload->user != null && $payload->jit != null) {
                     $key = $payload->user . '_' . $payload->jit;
                     $jit = Cache::read($key, $config = 'jit');
                     if($jit != null) {
-                        Cache::delete($key, $config = 'jit');
+                        //Cache::delete($key, $config = 'jit');
                         $this->payload = $payload;
                     }
                 }
@@ -67,9 +66,9 @@ class APIController extends AppController {
 //                $this->payload = null;
                 throw new UnauthorizedException('Invalid token');
             }
-            if($this->payload == null) {
-                throw new UnauthorizedException('Invalid token');
-            }
+//            if($this->payload == null) {
+//                throw new UnauthorizedException('Invalid token');
+//            }
         }
     }
 
@@ -104,6 +103,7 @@ class APIController extends AppController {
         $now = time();
         $payload = array(
             "iss" => "issuer, get the hostname or smth",
+            "issto" => $this->request->clientIp(),
             "iat" => $now,
             "nbf" => $now,
             "exp" => $now + 1800, // 30min, make configurable?
