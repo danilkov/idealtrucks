@@ -35,7 +35,7 @@ class HomeController extends AppController
     public function display()
     {
         try {
-            $this->response->file('webroot/app.html'); // FIXME: is there a config setting for the webroot location?
+            $this->response->file(WWW_ROOT . DS . 'app.html');
             return $this->response;
         } catch (MissingTemplateException $e) {
             if (Configure::read('debug')) {
