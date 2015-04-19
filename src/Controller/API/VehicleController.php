@@ -15,39 +15,29 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
-use stdClass;
 
 /**
- * Search controller
+ * Vehicle resource controller
  *
  */
-class SearchController extends APIController {
+class VehicleController extends APIController {
     public function initialize() {
         parent::initialize();
     }
 
     public function simpleSearch() {
-        $object = new stdClass();
-        $object->make = 'Mercedes';
-        $object->model = 'XYZ';
-        $object->type = 'Truck';
-        $object->description = 'Via simple search';
-        $this->setResponseValue('vehicles', array($object));
+        $this->setResponseValue('vehicles',
+            array('vehicle' => array('make' => 'Mercedes', 'model' => 'XYZ', 'type' => 'Truck', 'description' => 'Test')));
     }
 
     public function advancedSearch() {
-        $object = new stdClass();
-        $object->make = 'Volvo';
-        $object->model = 'ABC';
-        $object->type = 'Truck';
-        $object->mileage = '23323223';
-        $object->description = 'Via advanced search';
-        $this->setResponseValue('vehicles', array($object));
+        $this->setResponseValue('vehicles',
+            array('vehicle' => array('make' => 'Volvo', 'model' => 'ABC', 'type' => 'Truck', 'mileage' => '23323223', 'description' => 'Via advanced search')));
     }
 
     protected function isActionAllowed($action, $userId, $paymentPlan) {
-        if('advancedSearch' === $action && $userId == null) {
-            return false; // TODO: check the payment plan, maybe
+        if('preview' !== $action && $userId == null) {
+            return false; // TODO: verify if the user can actually modify the vehicle
         }
         return parent::isActionAllowed($action, $userId, $paymentPlan);
     }
