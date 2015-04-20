@@ -5,8 +5,8 @@
     controller('VehiclesController',
             ['$rootScope', '$scope', 'TokenService', 'VehiclesService', '$routeParams',
             function ($rootScope, $scope, tokenService, vehiclesService, $routeParams) {
-        function success(vehicle) {
-            $scope.vehicle = vehicle;
+        function success(res) {
+            $scope.vehicle = res.vehicle;
         }
 
         function error(res) {

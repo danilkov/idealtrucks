@@ -15,6 +15,7 @@
 namespace App\Controller;
 
 use Cake\Core\Configure;
+use stdClass;
 
 /**
  * Vehicle resource controller
@@ -25,14 +26,48 @@ class VehicleController extends APIController {
         parent::initialize();
     }
 
-    public function simpleSearch() {
-        $this->setResponseValue('vehicles',
-            array('vehicle' => array('make' => 'Mercedes', 'model' => 'XYZ', 'type' => 'Truck', 'description' => 'Test')));
+    public function index() {
+        $this->setResponseValue('vehicles', array()); // TODO: get all vehicles for the user
     }
 
-    public function advancedSearch() {
-        $this->setResponseValue('vehicles',
-            array('vehicle' => array('make' => 'Volvo', 'model' => 'ABC', 'type' => 'Truck', 'mileage' => '23323223', 'description' => 'Via advanced search')));
+    public function view($id) {
+        //$this->setResponseValue('vehicle', array($id)); // TODO: get the vehicle if it belongs to the user account
+        $object = new stdClass();
+        $object->id = $id;
+        $object->make = 'Volvo';
+        $object->model = 'ABC';
+        $object->type = 'Truck';
+        $object->mileage = '23323223';
+        $object->description = 'Advanced view, more data';
+        $this->setResponseValue('vehicle', $object);
+    }
+
+    public function add() {
+        // TODO: create
+        $id = 123;
+
+        return view($id);
+    }
+
+    public function edit($id) {
+        // TODO: update the vehicle if it belongs to the user account
+        return view($id);
+    }
+
+    public function delete($id) {
+        // TODO: delete the vehicle if it belongs to the user account
+        return view(array('status' => 'ok'));
+    }
+
+    public function preview($id) {
+        //$this->setResponseValue('vehicle', array($id)); // TODO: get the vehicle if it belongs to the user account
+        $object = new stdClass();
+        $object->id = $id;
+        $object->make = 'Mercedes';
+        $object->model = 'XYZ';
+        $object->type = 'Truck';
+        $object->description = 'Simple view for not signed-in users';
+        $this->setResponseValue('vehicle', $object);
     }
 
     protected function isActionAllowed($action, $userId, $paymentPlan) {

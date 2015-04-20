@@ -59,9 +59,10 @@ Router::scope('/', function ($routes) {
         $routes->connect('/signup', ['controller' => 'Auth', 'action' => 'signup', '_method' => 'POST']);
         $routes->connect('/token-refresh', ['controller' => 'Auth', 'action' => 'tokenRefresh', '_method' => 'GET']);
 
-//        Route::get('/vehicle/{vehicle}/preview', 'VehicleController@get');
-//        Route::resource('/vehicle', 'VehicleController');
         $routes->resources('Vehicle');
+        $routes->connect('/vehicle/:id/preview',
+            ['controller' => 'Vehicle', 'action' => 'preview', '_method' => 'GET'],
+            ['pass' => ['id'], 'id' => '[0-9]+']);
 
         $routes->connect('/**', ['controller' => 'API', 'action' => 'notImplemented']);
     });

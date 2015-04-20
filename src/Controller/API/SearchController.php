@@ -28,6 +28,7 @@ class SearchController extends APIController {
 
     public function simpleSearch() {
         $object = new stdClass();
+        $object->id = 321;
         $object->make = 'Mercedes';
         $object->model = 'XYZ';
         $object->type = 'Truck';
@@ -37,6 +38,7 @@ class SearchController extends APIController {
 
     public function advancedSearch() {
         $object = new stdClass();
+        $object->id = 123;
         $object->make = 'Volvo';
         $object->model = 'ABC';
         $object->type = 'Truck';
