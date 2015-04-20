@@ -62,7 +62,7 @@ class APIController extends AppController {
                 }
             }
             catch(Exception $e) {
-                throw new UnauthorizedException('Invalid token');
+                //throw new UnauthorizedException('Invalid token'); // Ignore the exception (for now?), let the controller decide if the action is allowed for the unauthorized
             }
             if(!$this->isActionAllowed($this->request->param('action'), $this->getUserId(), $this->getPaymentPlan())) {
                 throw new UnauthorizedException('Access denied');
