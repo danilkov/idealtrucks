@@ -61,6 +61,7 @@ Router::scope('/', function ($routes) {
 
 //        Route::get('/vehicle/{vehicle}/preview', 'VehicleController@get');
 //        Route::resource('/vehicle', 'VehicleController');
+        $routes->resources('Vehicle');
 
         $routes->connect('/**', ['controller' => 'API', 'action' => 'notImplemented']);
     });

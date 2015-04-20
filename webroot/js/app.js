@@ -45,7 +45,7 @@
                     tokenService.setToken(token);
                 }
             }
-            
+
             return {
                 'request': function (config) {
                     config.headers = config.headers || {};
@@ -106,7 +106,7 @@
             $scope.currentLanguage = localStorage.langKey;
         }
         else {
-            $scope.currentLanguage = $translate.proposedLanguage();
+            $scope.currentLanguage = $translate.use();
         }
 
         $scope.languages = [

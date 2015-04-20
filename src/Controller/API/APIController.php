@@ -56,7 +56,7 @@ class APIController extends AppController {
                     $jit = Cache::read($key, $config = 'jit');
                     if($jit != null) {
                         //Cache::delete($key, $config = 'jit');
-                        $this->setUser($payload->user);
+                        $this->setUserId($payload->user);
                         $this->setPaymentPlan($payload->plan);
                     }
                 }
@@ -71,13 +71,13 @@ class APIController extends AppController {
         }
     }
 
-    protected function isActionAllowed($action, $userId, $paymentPlan) {  // override in subclasses
-        return true;
-    }
-
-    protected function notImplemented() {
+    public function notImplemented() {
         $this->response->statusCode(501);
         $this->setResponseValue('error', new Error('Not Implemented'));
+    }
+
+    protected function isActionAllowed($action, $userId, $paymentPlan) {  // override in subclasses
+        return true;
     }
 
     protected function setResponseValue($name, $value) {
@@ -92,7 +92,7 @@ class APIController extends AppController {
 
         $isStrong = false;
         $jit = bin2hex(openssl_random_pseudo_bytes(16, $isStrong));
-        Cache::write($userId . '_' . $jit, $jit, $config = 'jit');
+        Cache::write($this->getUserId() . '_' . $jit, $jit, $config = 'jit');
 
         $now = time();
         $payload = array(
@@ -115,7 +115,7 @@ class APIController extends AppController {
         return $this->userId;
     }
 
-    protected final function setUserId(&userId) {
+    protected final function setUserId($userId) {
         $this->userId = $userId;
     }
 
@@ -123,7 +123,7 @@ class APIController extends AppController {
         return $this->paymentPlan;
     }
 
-    protected final function setPaymentPlan(&paymentPlan) {
+    protected final function setPaymentPlan($paymentPlan) {
         $this->paymentPlan = $paymentPlan;
     }
 
