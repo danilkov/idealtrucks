@@ -2,17 +2,19 @@
     'use strict';
 
     angular.module('auth').
-    controller('AuthController', ['$rootScope', '$scope', '$location', '$translatePartialLoader', '$interval', 'TokenService', 'AuthService',
+    controller('AuthController',
+            ['$rootScope', '$scope', '$location', '$translatePartialLoader', '$interval', 'TokenService', 'AuthService',
             function ($rootScope, $scope, $location, $translatePartialLoader, $interval, tokenService, authService) {
         function successAuth(res) {
-            //tokenService.setToken(res.token);
-            $location.path("/");
-            //window.location = "/";
+            if($rootScope.returnTo) {
+                $location.path($rootScope.returnTo);
+            }
+            else {
+                $location.path("/");
+            }
         }
 
         function successLogout() {
-            tokenService.setToken(null);
-            //$location.path("/");
             window.location = "/";
         }
 

@@ -32,6 +32,7 @@
                 controller: 'VehiclesController'
             }).
             when('/account', {
+                restricted: true,
                 templateUrl: 'modules/account/account.html',
                 controller: 'AuthController'  // FIXME: use the account controller
             }).
@@ -64,6 +65,7 @@
                 'responseError': function (response) {
                     if (response.status === 401 || response.status === 403) {
                         tokenService.setToken(null);
+                        $rootScope.returnTo = $location.path();
                         $location.path('/signin');
                     }
                     else {
@@ -125,8 +127,12 @@
         $rootScope.$on( "$routeChangeStart", function(event, next) {
             delete $rootScope.error;
             if (tokenService.getToken() == null) {
-                if (next && next.templateUrl && next.templateUrl.indexOf('modules/account/') == 0) {
+                if (next && next.restricted === true) {
+                    $rootScope.returnTo = $location.path();
                     $location.path("/signin");
+                }
+                else if($rootScope.returnTo) {
+                    delete $rootScope.returnTo;
                 }
             }
         });
@@ -136,13 +142,5 @@
         });
 
         tokenService.setToken(localStorage.token);
-
-        //if(localStorage.langKey) {
-        //    $translate.use(localStorage.langKey);
-        //    $rootScope.currentLanguage = localStorage.langKey;
-        //}
-        //else {
-        //    $rootScope.currentLanguage = $translate.proposedLanguage();
-        //}
     }]);
 })();
