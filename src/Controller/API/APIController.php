@@ -39,6 +39,10 @@ class APIController extends AppController {
      */
     public function initialize() {
         parent::initialize();
+        $this->loadComponent('Auth', [
+            'authenticate' => ['Hybrid']
+        ]);
+        $this->Auth->allow(); // TODO: defer the call to the derived class
         $this->loadComponent('RequestHandler');
         $this->RequestHandler->renderAs($this, 'json');
     }
@@ -46,7 +50,9 @@ class APIController extends AppController {
     public function beforeFilter(Event $event) {
         parent::beforeFilter($event);
 
-        $authHeader = $this->request->header('Authorization');
+        $user = $this->Auth->identify();
+
+/*        $authHeader = $this->request->header('Authorization');
         if(!empty($authHeader) && 'Bearer ' === substr($authHeader, 0, 7)) {
             $token = substr($authHeader, 7);
             try {
@@ -68,7 +74,7 @@ class APIController extends AppController {
         }
         if(!$this->isActionAllowed($this->request->param('action'), $this->getUserId(), $this->getPaymentPlan())) {
             throw new UnauthorizedException('Access denied');
-        }
+        }*/
     }
 
     public function notImplemented() {

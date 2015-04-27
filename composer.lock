@@ -127,16 +127,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "990eaa36f616e8476bf057a17564b57479a9be66"
+                "reference": "40c10c6a1ea0cd1fa34227aeb294b95e44c0ab7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/990eaa36f616e8476bf057a17564b57479a9be66",
-                "reference": "990eaa36f616e8476bf057a17564b57479a9be66",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/40c10c6a1ea0cd1fa34227aeb294b95e44c0ab7a",
+                "reference": "40c10c6a1ea0cd1fa34227aeb294b95e44c0ab7a",
                 "shasum": ""
             },
             "require": {
@@ -197,20 +197,20 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-05 01:14:57"
+            "time": "2015-04-20 01:29:22"
         },
         {
             "name": "cakephp/migrations",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "f0119280688fa16db407d0c31ee4b2e55674e678"
+                "reference": "2529bd128479b5d746ff0acbf6fca2c84becd31e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/f0119280688fa16db407d0c31ee4b2e55674e678",
-                "reference": "f0119280688fa16db407d0c31ee4b2e55674e678",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/2529bd128479b5d746ff0acbf6fca2c84becd31e",
+                "reference": "2529bd128479b5d746ff0acbf6fca2c84becd31e",
                 "shasum": ""
             },
             "require": {
@@ -247,7 +247,7 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2015-04-09 18:57:45"
+            "time": "2015-04-18 09:36:44"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -835,16 +835,16 @@
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "824c1610fe4a79f14f0a22b56de06241dfa49c37"
+                "reference": "51d8f0e0f9d88888b7e341206415322500b4af1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/824c1610fe4a79f14f0a22b56de06241dfa49c37",
-                "reference": "824c1610fe4a79f14f0a22b56de06241dfa49c37",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/51d8f0e0f9d88888b7e341206415322500b4af1e",
+                "reference": "51d8f0e0f9d88888b7e341206415322500b4af1e",
                 "shasum": ""
             },
             "require": {
@@ -860,7 +860,7 @@
             "type": "cakephp-plugin",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2.x-dev"
+                    "dev-master": "3.0.x-dev"
                 }
             },
             "autoload": {
@@ -891,7 +891,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2015-03-22 18:05:17"
+            "time": "2015-04-19 19:07:17"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

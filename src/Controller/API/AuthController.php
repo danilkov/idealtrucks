@@ -28,6 +28,7 @@ class AuthController extends APIController {
 
     public function signin() {
         // if sign-in successful
+        $user = $this->Auth->identify();
         $this->setUserId('Blah');
         $this->setPaymentPLan('Free');
         $this->generateToken();
@@ -38,13 +39,13 @@ class AuthController extends APIController {
         // if sign-up successful
         $this->setUserId('Blah');
         $this->setPaymentPLan('Free');
-        $this->generateToken();
+//        $this->generateToken();
         $this->setResponseValue('account', '{}'); // TODO: return the account from the database
     }
 
     public function tokenRefresh() {
         if($this->getUserId() != null) { // The token has been provided and is valid
-            $this->generateToken();            // Create new token. TODO: use the payload data
+//            $this->generateToken();            // Create new token. TODO: use the payload data
             $this->setResponseValue('status', 'ok');
         }
         else {

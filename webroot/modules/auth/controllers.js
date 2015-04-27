@@ -15,7 +15,9 @@
         }
 
         function successLogout() {
-            window.location = "/";
+//             window.location = "/";
+            tokenService.setToken(null);
+            $location.path("/");
         }
 
         function refreshToken() {
