@@ -24,6 +24,7 @@ use stdClass;
 class VehicleController extends APIController {
     public function initialize() {
         parent::initialize();
+        $this->Auth->allow('preview');
     }
 
     public function index() {
@@ -68,12 +69,5 @@ class VehicleController extends APIController {
         $object->type = 'Truck';
         $object->description = 'Simple view for not signed-in users';
         $this->setResponseValue('vehicle', $object);
-    }
-
-    protected function isActionAllowed($action, $userId, $paymentPlan) {
-        if('preview' !== $action && $userId == null) {
-            return false; // TODO: verify if the user can actually modify the vehicle
-        }
-        return parent::isActionAllowed($action, $userId, $paymentPlan);
     }
 }

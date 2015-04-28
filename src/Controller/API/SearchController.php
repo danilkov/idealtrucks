@@ -24,6 +24,7 @@ use stdClass;
 class SearchController extends APIController {
     public function initialize() {
         parent::initialize();
+        $this->Auth->allow('simpleSearch');
     }
 
     public function simpleSearch() {
@@ -45,12 +46,5 @@ class SearchController extends APIController {
         $object->mileage = '23323223';
         $object->description = 'Via advanced search';
         $this->setResponseValue('vehicles', array($object));
-    }
-
-    protected function isActionAllowed($action, $userId, $paymentPlan) {
-        if('advancedSearch' === $action && $userId == null) {
-            return false; // TODO: check the payment plan, maybe
-        }
-        return parent::isActionAllowed($action, $userId, $paymentPlan);
     }
 }

@@ -24,6 +24,7 @@ use Cake\Event\Event;
 class AuthController extends APIController {
     public function initialize() {
         parent::initialize();
+        $this->Auth->allow(['signin', 'signup', 'verifyEmail']);
     }
 
     public function signin() {
@@ -44,13 +45,17 @@ class AuthController extends APIController {
     }
 
     public function tokenRefresh() {
-        if($this->getUserId() != null) { // The token has been provided and is valid
+//        if($this->getUserId() != null) { // The token has been provided and is valid
 //            $this->generateToken();            // Create new token. TODO: use the payload data
             $this->setResponseValue('status', 'ok');
-        }
-        else {
-            $this->response->statusCode(401);
-            $this->setResponseValue('error', 'Access denied');
-        }
+//        }
+//        else {
+//            $this->response->statusCode(401);
+//            $this->setResponseValue('error', 'Access denied');
+//        }
     }
+
+     public function tokenRefresh() {
+        // TODO: Implement
+     }
 }

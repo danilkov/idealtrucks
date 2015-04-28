@@ -42,7 +42,7 @@ class APIController extends AppController {
         $this->loadComponent('Auth', [
             'authenticate' => ['Hybrid']
         ]);
-        $this->Auth->allow(); // TODO: defer the call to the derived class
+        //$this->Auth->allow(); // TODO: defer the call to the derived class
         $this->loadComponent('RequestHandler');
         $this->RequestHandler->renderAs($this, 'json');
     }
