@@ -55,7 +55,7 @@ class AuthController extends APIController {
 //        }
     }
 
-     public function tokenRefresh() {
+     public function verifyEmail() {
         // TODO: Implement
      }
 }
