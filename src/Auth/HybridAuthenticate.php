@@ -18,8 +18,9 @@ class HybridAuthenticate extends BaseAuthenticate {
         $token = $this->generateToken($user);
         if($token) {
             $response->header('X-JWT-Token', $token);
-            $response->header('X-Test', $user->id);
+            return $user;
         }
+        return FALSE;
     }
 
     public function getUser(Request $request) {
