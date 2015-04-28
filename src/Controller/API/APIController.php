@@ -51,6 +51,9 @@ class APIController extends AppController {
         parent::beforeFilter($event);
 
         $user = $this->Auth->identify();
+        if($user != null) {
+            $this->Auth->setUser($user);
+        }
 
 /*        $authHeader = $this->request->header('Authorization');
         if(!empty($authHeader) && 'Bearer ' === substr($authHeader, 0, 7)) {
