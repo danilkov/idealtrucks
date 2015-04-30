@@ -3,3 +3,5 @@
 /tmp/*
 /logs/*
 .idea
+/webroot/js/app.js
+/webroot/css/app.css

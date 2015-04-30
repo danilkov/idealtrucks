@@ -48,28 +48,36 @@
         });
 */
 
-        $scope.signin = function () {
-            var formData = {
-                email: $scope.email,
-                password: $scope.password
-            };
+        $scope.signin = function (isValid) {
+            if(isValid) {
+                var formData = {
+                    email: $scope.email,
+                    password: $scope.password
+                };
 
-            authService.signin(formData, successAuth, function () {
-                $rootScope.error = 'Invalid credentials.';
-            })
+                authService.signin(formData, successAuth, function () {
+                    $rootScope.error = 'Invalid credentials.';
+                });
+            }
         };
 
-        $scope.signup = function () {
-            var formData = {
-                name: $scope.name,
-                email: $scope.email,
-                password: $scope.password,
-                password_confirmation: $scope.password_confirmation
-            };
+        $scope.signup = function (isValid) {
+            if(isValid) {
+                delete $scope.signupFormInvalid;
+                var formData = {
+                    name: $scope.name,
+                    email: $scope.email,
+                    password: $scope.password,
+                    password_confirmation: $scope.password_confirmation
+                };
 
-            authService.signup(formData, successAuth, function (res) {
-                $rootScope.error = res.error || 'Failed to sign up.';
-            })
+                authService.signup(formData, successAuth, function (res) {
+                    $rootScope.error = res.error || 'Failed to sign up.';
+                });
+            }
+            else {
+                $scope.signupFormInvalid = true;
+            }
         };
 
         $scope.logout = function () {

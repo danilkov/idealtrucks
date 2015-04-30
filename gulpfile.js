@@ -5,26 +5,51 @@ var uglify = require('gulp-uglify')
 var ngAnnotate = require('gulp-ng-annotate')
 var minifyCss = require('gulp-minify-css');
 
-var jsFiles = ['webroot/modules/**/services.js', 'webroot/modules/**/controllers.js','webroot/js/third-party/*.js', 'webroot/js/app.js'];
-var cssFiles = ['webroot/css/*.css'];
+var jsFiles = [
+	'webroot/js/third-party/angular-translate.js',
+	'webroot/js/third-party/angular-translate-loader-partial.js',
+	'webroot/js/third-party/loading-bar.js',
+	'webroot/modules/**/services.js',
+	'webroot/modules/**/controllers.js',
+	'webroot/js/main.js'
+];
+var cssFiles = [
+//	'webroot/css/base.css',
+//	'webroot/css/cake.css',
+	'webroot/css/loading-bar.css',
+	'webroot/css/main.css'
+];
 
 gulp.task('js', function () {
   gulp.src(jsFiles)
-//    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init())
     .pipe(concat('app.js'))
 //    .pipe(ngAnnotate())
     .pipe(uglify())
-//    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('.'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./webroot/js/'))
 });
 
 gulp.task('css', function() {
-  return gulp.src(cssFiles)
-//    .pipe(sourcemaps.init())
+  gulp.src(cssFiles)
+    .pipe(sourcemaps.init())
     .pipe(concat('app.css'))
     .pipe(minifyCss({keepSpecialComments: 0}))
-//    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('.'));
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./webroot/css/'));
+});
+
+gulp.task('dist', function () {
+    gulp.src(jsFiles)
+        .pipe(concat('app.js'))
+  //      .pipe(ngAnnotate())
+        .pipe(uglify())
+        .pipe(gulp.dest('./webroot/js/'))
+
+    gulp.src(cssFiles)
+        .pipe(concat('app.css'))
+        .pipe(minifyCss({keepSpecialComments: 0}))
+        .pipe(gulp.dest('./webroot/css/'));
 });
 
 gulp.task('watch', ['js', 'css'], function () {
