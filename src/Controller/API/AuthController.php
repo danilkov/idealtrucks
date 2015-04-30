@@ -30,29 +30,18 @@ class AuthController extends APIController {
     public function signin() {
         // if sign-in successful
         $user = $this->Auth->identify();
-        $this->setUserId('Blah');
-        $this->setPaymentPLan('Free');
-        $this->generateToken();
-        $this->setResponseValue('account', '{}'); // TODO: return the account from the database
+        $this->setResponseValue('account', $user); // TODO: return the account from the database
     }
 
     public function signup() {
+        // FIXME: If signup successfull, send an e-mail with a link to verify the e-mail, don't sign in
         // if sign-up successful
-        $this->setUserId('Blah');
-        $this->setPaymentPLan('Free');
-//        $this->generateToken();
-        $this->setResponseValue('account', '{}'); // TODO: return the account from the database
+        $user = $this->Auth->identify();
+        $this->setResponseValue('account', $user); // TODO: return the account from the database
     }
 
     public function tokenRefresh() {
-//        if($this->getUserId() != null) { // The token has been provided and is valid
-//            $this->generateToken();            // Create new token. TODO: use the payload data
-            $this->setResponseValue('status', 'ok');
-//        }
-//        else {
-//            $this->response->statusCode(401);
-//            $this->setResponseValue('error', 'Access denied');
-//        }
+        $this->setResponseValue('status', 'ok');
     }
 
      public function verifyEmail() {

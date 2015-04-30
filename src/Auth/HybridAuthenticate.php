@@ -13,12 +13,18 @@ class HybridAuthenticate extends BaseAuthenticate {
     public function authenticate(Request $request, Response $response) {
         $user = $this->getUser($request);
         if($user == null) {
-            // $user = authenticate using e-mail/password/token/mobile-token
+            $data = $request->input('json_decode', true);
+            if($data) {
+                // $user = authenticate using e-mail/password/token/mobile-token
+                $user = $object = new stdClass(); // TODO: fetch from the db, check password/token
+                $user->id = $data['email'];
+                $user->plan = 'TBD';
+            }
         }
         $token = $this->generateToken($user);
         if($token) {
             $response->header('X-JWT-Token', $token);
-            return $user;
+            return (array)$user;
         }
         return FALSE;
     }
@@ -38,8 +44,6 @@ class HybridAuthenticate extends BaseAuthenticate {
                         $user = $object = new stdClass();
                         $user->id = $payload->user;
                         $user->plan = $payload->plan;
-//                        $this->setUserId($payload->user);
-//                        $this->setPaymentPlan($payload->plan);
                     }
                 }
             }

@@ -40,7 +40,8 @@ class APIController extends AppController {
     public function initialize() {
         parent::initialize();
         $this->loadComponent('Auth', [
-            'authenticate' => ['Hybrid']
+            'authenticate' => ['Hybrid'],
+            'loginAction' => '/signin'
         ]);
         //$this->Auth->allow(); // TODO: defer the call to the derived class
         $this->loadComponent('RequestHandler');
@@ -54,30 +55,9 @@ class APIController extends AppController {
         if($user != null) {
             $this->Auth->setUser($user);
         }
-
-/*        $authHeader = $this->request->header('Authorization');
-        if(!empty($authHeader) && 'Bearer ' === substr($authHeader, 0, 7)) {
-            $token = substr($authHeader, 7);
-            try {
-                $payload = JWT::decode($token, Security::salt(), array('HS512')); // TODO: get the key, not the salt.
-                if($payload != null && $payload->user != null && $payload->jit != null) {
-                    $key = $payload->user . '_' . $payload->jit;
-                    $jit = Cache::read($key, $config = 'jit');
-                    if($jit != null) {
-                        //Cache::delete($key, $config = 'jit');
-                        $this->setUserId($payload->user);
-                        $this->setPaymentPlan($payload->plan);
-                    }
-                }
-            }
-            catch(Exception $e) {
-                //throw new UnauthorizedException('Invalid token'); // Ignore the exception (for now?), let the controller decide if the action is allowed for the unauthorized
-            }
-            $this->generateToken(); // Generate new token
+        else {
+            $this->response->header('X-Debug', 'No user returned');
         }
-        if(!$this->isActionAllowed($this->request->param('action'), $this->getUserId(), $this->getPaymentPlan())) {
-            throw new UnauthorizedException('Access denied');
-        }*/
     }
 
     public function notImplemented() {
@@ -85,57 +65,8 @@ class APIController extends AppController {
         $this->setResponseValue('error', new Error('Not Implemented'));
     }
 
-    protected function isActionAllowed($action, $userId, $paymentPlan) {  // override in subclasses
-        return true;
-    }
-
     protected function setResponseValue($name, $value) {
         $this->set($name, $value);
         $this->set('_serialize', array($name));
     }
-
-    protected final function generateToken() {
-        if($this->getUserId() == null) {
-            return;
-        }
-
-        $isStrong = false;
-        $jit = bin2hex(openssl_random_pseudo_bytes(16, $isStrong));
-        Cache::write($this->getUserId() . '_' . $jit, $jit, $config = 'jit');
-
-        $now = time();
-        $payload = array(
-            "iss" => "issuer, get the hostname or smth",
-            //"issto" => $this->request->clientIp(),
-            "iat" => $now,
-            "nbf" => $now,
-            "exp" => $now + 1800, // 30min, make configurable?
-            "jit" => $jit,
-            "user" => $this->getUserId(),
-            "plan" => $this->getPaymentPlan()
-        );
-
-        $token = JWT::encode($payload, Security::salt(), 'HS512'); // TODO: get the key, not the salt.
-        $this->response->header('X-JWT-Token', $token);
-        return $token;
-    }
-
-    protected final function getUserId() {
-        return $this->userId;
-    }
-
-    protected final function setUserId($userId) {
-        $this->userId = $userId;
-    }
-
-    protected final function getPaymentPlan() {
-        return $this->paymentPlan;
-    }
-
-    protected final function setPaymentPlan($paymentPlan) {
-        $this->paymentPlan = $paymentPlan;
-    }
-
-    private $userId;
-    private $paymentPlan;
 }
