@@ -50,6 +50,7 @@
 
         $scope.signin = function (isValid) {
             if(isValid) {
+                delete $scope.signinFormInvalid;
                 var formData = {
                     email: $scope.email,
                     password: $scope.password
@@ -58,6 +59,9 @@
                 authService.signin(formData, successAuth, function () {
                     $rootScope.error = 'Invalid credentials.';
                 });
+            }
+            else {
+                $scope.signinFormInvalid = true;
             }
         };
 

@@ -5,26 +5,28 @@
                 <strong translate="SIGN_IN_ID">Sign in</strong>
             </div>
             <div class="panel-body">
-                <form name="signinForm" class="form-horizontal" role="form" ng-submit="signin()" novalidate>
-                    <div class="form-group">
+                <form name="signinForm" class="form-horizontal" role="form" ng-submit="signin(signinForm.$valid)" novalidate>
+                    <div class="form-group" ng-class="{'has-error': signinForm.email.$invalid && (!signinForm.email.$pristine || signinFormInvalid)}">
                         <label for="email" class="col-sm-2 control-label" translate="EMAIL_ID">Email</label>
 
                         <div class="col-sm-10">
-                            <input type="email" class="form-control" id="email" placeholder="{{'EMAIL_ID' | translate}}"
+                            <input type="email" class="form-control" id="email" name="email" placeholder="{{'EMAIL_ID' | translate}}"
                                    ng-model="email" required>
+                            <p ng-show="signinForm.email.$invalid && (!signinForm.email.$pristine || signinFormInvalid)" class="help-block">Valid e-mail is required.</p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error': signinForm.password.$invalid && (!signinForm.password.$pristine || signinFormInvalid)}">
                         <label for="password" class="col-sm-2 control-label" translate="PASSWORD_ID">Password</label>
 
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="password" placeholder="{{'PASSWORD_ID' | translate}}"
+                            <input type="password" class="form-control" id="password" name="password" placeholder="{{'PASSWORD_ID' | translate}}"
                                    ng-model="password" required>
+                            <p ng-show="signinForm.password.$invalid && (!signinForm.password.$pristine || signinFormInvalid)" class="help-block">Password is required.</p>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button ng-disabled="signinForm.$invalid" type="submit" class="btn btn-primary pull-right" translate="SIGN_IN_ID">Sign in</button>
+                            <button type="submit" class="btn btn-primary pull-right" translate="SIGN_IN_ID">Sign in</button>
                         </div>
                     </div>
                     <p data-ng-show="error" class="error">{{ error }}</p>
