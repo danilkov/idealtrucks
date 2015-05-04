@@ -9,6 +9,7 @@ var jsFiles = [
 	'webroot/js/third-party/angular-translate.js',
 	'webroot/js/third-party/angular-translate-loader-partial.js',
 	'webroot/js/third-party/loading-bar.js',
+	'webroot/modules/directives/*.js',
 	'webroot/modules/**/services.js',
 	'webroot/modules/**/controllers.js',
 	'webroot/js/main.js'

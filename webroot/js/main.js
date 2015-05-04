@@ -4,6 +4,7 @@
         'ngRoute', 'ngResource',
         'angular-loading-bar',
         'pascalprecht.translate',
+        'directives.confirmPassword',
         'auth',
         'search',
         'vehicles'
