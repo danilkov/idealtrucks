@@ -11,6 +11,14 @@
                 var checker = function () {
                     var password = scope.$eval(attributes.ngModel);
                     var confirmedPassword = scope.$eval(attributes.confirmPassword);
+
+                    if("" === password) {
+                        password = null;
+                    }
+                    if("" === confirmedPassword) {
+                        confirmedPassword = null;
+                    }
+
                     return password == confirmedPassword;
                 };
                 scope.$watch(checker, function (isConfirmed) {
@@ -19,4 +27,4 @@
             }
         };
     }]);
-});
+})();
