@@ -5,7 +5,7 @@
     directive('confirmPassword', [function() {
         return {
             restrict: 'A',
-            scope:true,
+            scope: true,
             require: 'ngModel',
             link: function (scope, element, attributes, control) {
                 var checker = function () {
