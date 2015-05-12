@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "c92fcdf01d2c6895c8e5ae422fd26b95",
@@ -127,16 +127,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.0.2",
+            "version": "3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "40c10c6a1ea0cd1fa34227aeb294b95e44c0ab7a"
+                "reference": "22976db9856c1d6dea8b94136030cf8804609035"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/40c10c6a1ea0cd1fa34227aeb294b95e44c0ab7a",
-                "reference": "40c10c6a1ea0cd1fa34227aeb294b95e44c0ab7a",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/22976db9856c1d6dea8b94136030cf8804609035",
+                "reference": "22976db9856c1d6dea8b94136030cf8804609035",
                 "shasum": ""
             },
             "require": {
@@ -197,7 +197,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-04-20 01:29:22"
+            "time": "2015-05-08 01:45:39"
         },
         {
             "name": "cakephp/migrations",
@@ -578,17 +578,17 @@
         },
         {
             "name": "symfony/config",
-            "version": "v2.6.6",
+            "version": "v2.6.7",
             "target-dir": "Symfony/Component/Config",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Config.git",
-                "reference": "d91be01336605db8da21b79bc771e46a7276d1bc"
+                "reference": "b6fddb4aa2daaa2b06f0040071ac131b4a1ecf25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Config/zipball/d91be01336605db8da21b79bc771e46a7276d1bc",
-                "reference": "d91be01336605db8da21b79bc771e46a7276d1bc",
+                "url": "https://api.github.com/repos/symfony/Config/zipball/b6fddb4aa2daaa2b06f0040071ac131b4a1ecf25",
+                "reference": "b6fddb4aa2daaa2b06f0040071ac131b4a1ecf25",
                 "shasum": ""
             },
             "require": {
@@ -615,31 +615,31 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Config Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-02 15:18:45"
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.6",
+            "version": "v2.6.7",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667"
+                "reference": "ebc5679854aa24ed7d65062e9e3ab0b18a917272"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/5b91dc4ed5eb08553f57f6df04c4730a73992667",
-                "reference": "5b91dc4ed5eb08553f57f6df04c4730a73992667",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/ebc5679854aa24ed7d65062e9e3ab0b18a917272",
+                "reference": "ebc5679854aa24ed7d65062e9e3ab0b18a917272",
                 "shasum": ""
             },
             "require": {
@@ -673,31 +673,31 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Console Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-02 15:18:45"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v2.6.6",
+            "version": "v2.6.7",
             "target-dir": "Symfony/Component/Filesystem",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Filesystem.git",
-                "reference": "4983964b3693e4f13449cb3800c64a9112c301b4"
+                "reference": "f73904bd2dae525c42ea1f0340c7c98480ecacde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/4983964b3693e4f13449cb3800c64a9112c301b4",
-                "reference": "4983964b3693e4f13449cb3800c64a9112c301b4",
+                "url": "https://api.github.com/repos/symfony/Filesystem/zipball/f73904bd2dae525c42ea1f0340c7c98480ecacde",
+                "reference": "f73904bd2dae525c42ea1f0340c7c98480ecacde",
                 "shasum": ""
             },
             "require": {
@@ -723,31 +723,31 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Filesystem Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-22 16:55:57"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-08 00:09:07"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.6",
+            "version": "v2.6.7",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4"
+                "reference": "f157ab074e453ecd4c0fa775f721f6e67a99d9e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/174f009ed36379a801109955fc5a71a49fe62dd4",
-                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/f157ab074e453ecd4c0fa775f721f6e67a99d9e2",
+                "reference": "f157ab074e453ecd4c0fa775f721f6e67a99d9e2",
                 "shasum": ""
             },
             "require": {
@@ -773,32 +773,32 @@
             ],
             "authors": [
                 {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
                 }
             ],
             "description": "Symfony Yaml Component",
-            "homepage": "http://symfony.com",
-            "time": "2015-03-30 15:54:10"
+            "homepage": "https://symfony.com",
+            "time": "2015-05-02 15:18:45"
         }
     ],
     "packages-dev": [
         {
             "name": "cakephp/bake",
-            "version": "1.0.5",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "72ef145c4f9b7e0fd3c6910bce410da8c89951d2"
+                "reference": "313a58eb2e97aaae32f02942593e697e5930314c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/72ef145c4f9b7e0fd3c6910bce410da8c89951d2",
-                "reference": "72ef145c4f9b7e0fd3c6910bce410da8c89951d2",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/313a58eb2e97aaae32f02942593e697e5930314c",
+                "reference": "313a58eb2e97aaae32f02942593e697e5930314c",
                 "shasum": ""
             },
             "require": {
@@ -831,20 +831,20 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2015-04-27 01:41:12"
+            "time": "2015-05-11 07:33:53"
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.1.0",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "e32cdd081afb85616f56c6504a6cb00faeaa8922"
+                "reference": "7c8336831f93652367463beb025f423bd2ed08f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/e32cdd081afb85616f56c6504a6cb00faeaa8922",
-                "reference": "e32cdd081afb85616f56c6504a6cb00faeaa8922",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/7c8336831f93652367463beb025f423bd2ed08f7",
+                "reference": "7c8336831f93652367463beb025f423bd2ed08f7",
                 "shasum": ""
             },
             "require": {
@@ -891,7 +891,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2015-04-26 14:17:35"
+            "time": "2015-05-11 10:41:43"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1014,16 +1014,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v1.2.2",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "08f97eb4efa029e2fafb6d8c98b71731bf0cf621"
+                "reference": "dff239267fd1befa1cd40430c9ed12591aa720ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/08f97eb4efa029e2fafb6d8c98b71731bf0cf621",
-                "reference": "08f97eb4efa029e2fafb6d8c98b71731bf0cf621",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/dff239267fd1befa1cd40430c9ed12591aa720ca",
+                "reference": "dff239267fd1befa1cd40430c9ed12591aa720ca",
                 "shasum": ""
             },
             "require": {
@@ -1033,7 +1033,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -1055,7 +1055,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2015-04-03 14:33:59"
+            "time": "2015-05-02 15:40:40"
         },
         {
             "name": "psy/psysh",
