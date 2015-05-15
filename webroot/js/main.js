@@ -78,6 +78,9 @@
             }
         }]);
 
+        $httpProvider.defaults.xsrfHeaderName = 'X-CSRF-Token';
+        $httpProvider.defaults.xsrfCookieName = 'csrfToken';
+
         $locationProvider.html5Mode(true);
 
         $translateProvider

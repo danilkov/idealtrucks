@@ -34,9 +34,6 @@ class AppController extends Controller {
      * @return void
      */
     public function initialize() {
-        $this->loadComponent('Csrf', [
-            'secure' => true,
-            'cookieName' => 'XSRF-TOKEN'
-        ]);
+        $this->loadComponent('Csrf');
     }
 }
