@@ -6,7 +6,7 @@
             </div>
             <div class="panel-body">
                 <form name="signupForm" class="form-horizontal" role="form" ng-submit="signup(signupForm.$valid)" novalidate>
-                    <div class="form-group" class="form-group" ng-class="{'has-error': signupForm.name.$invalid && (signupForm.name.$touched || signupFormInvalid) || signupForm.name.$error.maxlength}">
+                    <div class="form-group" class="form-group" ng-class="{'has-error': (signupForm.name.$invalid || signupForm.name.$error.maxlength) && (signupForm.name.$touched || signupFormInvalid)}">
                         <label for="name" class="col-sm-2 control-label" translate="NAME_ID">Name</label>
 
                         <div class="col-sm-10">
@@ -25,15 +25,17 @@
                             <p ng-show="signupForm.email.$invalid && (signupForm.email.$touched || signupFormInvalid)" class="help-block">Valid e-mail is required.</p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" ng-class="{'has-error': (signupForm.password.$invalid || signupForm.strength.$error.passwordTooWeek) && (signupForm.password.$touched || signupFormInvalid)}">
                         <label for="password" class="col-sm-2 control-label" translate="PASSWORD_ID">Password</label>
 
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="password" name="password"
-                                   placeholder="{{'PASSWORD_ID' | translate}}" ng-model="password" required><password-strength check-strength="password"></password-strength>
+                                   placeholder="{{'PASSWORD_ID' | translate}}" ng-model="password" required><password-strength name="strength" ng-model="password"></password-strength>
+                            <p ng-show="signupForm.strength.$error.passwordTooWeek && (signupForm.password.$touched || signupFormInvalid)" class="help-block">Password is too weak.</p>
+                            <p ng-show="signupForm.password.$invalid && (signupForm.password.$touched || signupFormInvalid)" class="help-block">Password is required.</p>
                         </div>
                     </div>
-                    <div class="form-group"ng-class="{'has-error': signupForm.password_confirmation.$error.passwordMismatch && (signupForm.password_confirmation.$touched || signupFormInvalid) || signupForm.name.$error.maxlength}">
+                    <div class="form-group" ng-class="{'has-error': signupForm.password_confirmation.$error.passwordMismatch && (signupForm.password_confirmation.$touched || signupFormInvalid)}">
                         <label for="password_confirmation" class="col-sm-2 control-label" translate="PASSWORD_CONFIRM_ID">Confirm Password</label>
 
                         <div class="col-sm-10">
