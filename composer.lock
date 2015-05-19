@@ -127,16 +127,16 @@
         },
         {
             "name": "cakephp/cakephp",
-            "version": "3.0.4",
+            "version": "3.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/cakephp.git",
-                "reference": "22976db9856c1d6dea8b94136030cf8804609035"
+                "reference": "d853d756efa39bad2f744c0110f8626e7b619590"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/22976db9856c1d6dea8b94136030cf8804609035",
-                "reference": "22976db9856c1d6dea8b94136030cf8804609035",
+                "url": "https://api.github.com/repos/cakephp/cakephp/zipball/d853d756efa39bad2f744c0110f8626e7b619590",
+                "reference": "d853d756efa39bad2f744c0110f8626e7b619590",
                 "shasum": ""
             },
             "require": {
@@ -155,6 +155,7 @@
                 "cakephp/database": "self.version",
                 "cakephp/datasource": "self.version",
                 "cakephp/event": "self.version",
+                "cakephp/filesystem": "self.version",
                 "cakephp/i18n": "self.version",
                 "cakephp/log": "self.version",
                 "cakephp/orm": "self.version",
@@ -197,7 +198,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2015-05-08 01:45:39"
+            "time": "2015-05-18 01:39:10"
         },
         {
             "name": "cakephp/migrations",
@@ -835,16 +836,16 @@
         },
         {
             "name": "cakephp/debug_kit",
-            "version": "3.1.2",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/debug_kit.git",
-                "reference": "7c8336831f93652367463beb025f423bd2ed08f7"
+                "reference": "b5491b2aaf5064a00cdbc2b82538610e8f938bdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/7c8336831f93652367463beb025f423bd2ed08f7",
-                "reference": "7c8336831f93652367463beb025f423bd2ed08f7",
+                "url": "https://api.github.com/repos/cakephp/debug_kit/zipball/b5491b2aaf5064a00cdbc2b82538610e8f938bdd",
+                "reference": "b5491b2aaf5064a00cdbc2b82538610e8f938bdd",
                 "shasum": ""
             },
             "require": {
@@ -891,7 +892,7 @@
                 "debug",
                 "kit"
             ],
-            "time": "2015-05-11 10:41:43"
+            "time": "2015-05-17 18:01:14"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
