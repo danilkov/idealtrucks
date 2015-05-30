@@ -5,3 +5,4 @@
 .idea
 /webroot/js/app.js
 /webroot/css/app.css
+/node_modules
