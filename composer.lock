@@ -203,16 +203,16 @@
         },
         {
             "name": "cakephp/migrations",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "2529bd128479b5d746ff0acbf6fca2c84becd31e"
+                "reference": "b5758f5b62569d9de4f9a6bb81f4f868a87b3060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/2529bd128479b5d746ff0acbf6fca2c84becd31e",
-                "reference": "2529bd128479b5d746ff0acbf6fca2c84becd31e",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/b5758f5b62569d9de4f9a6bb81f4f868a87b3060",
+                "reference": "b5758f5b62569d9de4f9a6bb81f4f868a87b3060",
                 "shasum": ""
             },
             "require": {
@@ -249,7 +249,7 @@
                 "cakephp",
                 "migrations"
             ],
-            "time": "2015-04-18 09:36:44"
+            "time": "2015-05-29 21:28:50"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -789,16 +789,16 @@
     "packages-dev": [
         {
             "name": "cakephp/bake",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/bake.git",
-                "reference": "3fd850acabd68ef9674706c0ac9a0c56fffa35ea"
+                "reference": "da683a06847d695748a6d86f3699733d806d1e9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/bake/zipball/3fd850acabd68ef9674706c0ac9a0c56fffa35ea",
-                "reference": "3fd850acabd68ef9674706c0ac9a0c56fffa35ea",
+                "url": "https://api.github.com/repos/cakephp/bake/zipball/da683a06847d695748a6d86f3699733d806d1e9e",
+                "reference": "da683a06847d695748a6d86f3699733d806d1e9e",
                 "shasum": ""
             },
             "require": {
@@ -831,7 +831,7 @@
                 "bake",
                 "cakephp"
             ],
-            "time": "2015-05-24 14:07:25"
+            "time": "2015-06-01 18:53:03"
         },
         {
             "name": "cakephp/debug_kit",
