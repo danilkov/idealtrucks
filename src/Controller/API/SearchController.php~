@@ -38,16 +38,7 @@ class SearchController extends APIController {
     }
 
     public function simpleSearch() {
-    	  $client = new Solarium\Client($this->config);
-    	  $query = $client->createSelect();
-    	  
-    	  $facetSet = $query->getFacetSet();
-
-        // create a facet field instance and set options
-        //$facetSet->createFacetField('model')->setField('model'); // No sure how to use it yet
-
-        // this executes the query and returns the result
-        $resultset = $client->select($query);
+    	  $client = new Solarium\Client($this->config)
     	  
         $object = new stdClass();
         $object->id = 321;
@@ -55,9 +46,6 @@ class SearchController extends APIController {
         $object->model = 'XYZ';
         $object->type = 'Truck';
         $object->description = 'Via simple search';
-        
-        $object->test = $resultset;
-        
         $this->setResponseValue('vehicles', array($object));
     }
 
