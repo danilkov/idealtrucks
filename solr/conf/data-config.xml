@@ -1,0 +1,17 @@
+<dataConfig>
+    <dataSource type="JdbcDataSource" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/web" user="***" password="***" />
+    <document name="vehicles">
+        <entity name="vehicle" query="select v.id id, v.title title, v.description description, v.price price, concat_ws(',', v.price, c.code) as price_c, c.code currency, v.mileage mileage, mk.name make, md.name model, tp.name type from vehicles v join currencies c on (v.currency = c.id) join makes mk on (v.make = mk.id) join models md on (v.model = md.id) join types tp on (v.type = tp.id)">
+            <field column="id" name="id" />
+            <field column="title" name="title" />
+            <field column="description" name="description" />
+            <field column="price" name="price" />
+            <field column="price_c" name="price_c" />
+            <field column="currency" name="currency" />
+            <field column="mileage" name="mileage" />
+            <field column="make" name="make" />
+            <field column="model" name="model" />
+            <field column="type" name="type" />
+        </entity>
+    </document>
+</dataConfig>

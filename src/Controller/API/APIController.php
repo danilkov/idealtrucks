@@ -69,4 +69,11 @@ class APIController extends AppController {
         $this->set($name, $value);
         $this->set('_serialize', array($name));
     }
+
+    protected function setResponseValues(array $values) {
+        foreach ($values as $key => $value) {
+            $this->set($key, $value);
+        }
+        $this->set('_serialize', array_keys($values));
+    }
 }
