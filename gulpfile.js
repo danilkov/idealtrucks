@@ -18,7 +18,8 @@ var cssFiles = [
 //	'webroot/css/base.css',
 //	'webroot/css/cake.css',
 	'webroot/css/loading-bar.css',
-    'webroot/css/password-strength.css',
+	'webroot/css/password-strength.css',
+	'webroot/css/polyglot-language-switcher-2.css',
 	'webroot/css/main.css'
 ];
 
