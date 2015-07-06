@@ -12,6 +12,7 @@
     <script src="js/third-party/loading-bar.js"></script>
     <script src="js/third-party/angular-translate.js"></script>
     <script src="js/third-party/angular-translate-loader-partial.js"></script>
+    <script src="js/third-party/angular-polyglot.language.switcher.js"></script>
     <script src="modules/directives/password-strength.js"></script>
     <script src="modules/directives/confirm-password.js"></script>
     <script src="modules/auth/services.js"></script>
@@ -41,10 +42,16 @@
             <li data-ng-hide="token"><a ng-href="/signup" translate="SIGN_UP_ID"></a></li>
             <li data-ng-show="token" class="ng-hide"><a ng-click="logout()" translate="LOGOUT_ID"></a></li>
         </ul>
-        <div data-ng-controller="TranslateController" class="nav navbar-nav navbar-right ng-cloak" ng-cloak>
-            <select ng-change="changeLanguage()"
+        <div data-ng-controller="TranslateController" class="ng-cloak" ng-cloak>
+            <!--select ng-change="changeLanguage()"
                     ng-options="lang.id as lang.label for lang in languages"
-                    ng-model="currentLanguage"></select>
+                    ng-model="currentLanguage"></select-->
+            <pls id="pls1"
+		items="plsModel.languages"
+		selected-lang="{{currentLanguage}}"
+		language-changed-callback="onLanguageChanged(lang)"
+		open-mode="click"
+		show-flag="true"></pls>
         </div>
     </div>
     <div class="container" ng-view=""></div>

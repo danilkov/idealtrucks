@@ -4,6 +4,7 @@
         'ngRoute', 'ngResource',
         'angular-loading-bar',
         'pascalprecht.translate',
+	'polyglotLanguageSwitcher',
         'directives.passwordStrength',
         'directives.confirmPassword',
         'auth',
@@ -125,6 +126,23 @@
         $scope.changeLanguage = function () {
             $translate.use($scope.currentLanguage);
             localStorage.langKey = $scope.currentLanguage;
+        };
+
+	$scope.$on('pls.onLanguageChanged', function(evt, lang){
+            if (lang && lang.lang && lang.lang.id) {
+                $scope.currentLanguage = lang.lang.id;
+                $translate.use($scope.currentLanguage);
+                localStorage.langKey = $scope.currentLanguage;
+            }
+        });
+	$scope.plsModel = {
+            languages: [
+                {id: 'de', title: 'Deutsch', name: ' Deutsch', flagImg: 'img/de.png', flagTitle: 'Deutschland'},
+                {id: 'ru', title: 'Русский', name: 'Русский', flagImg: 'img/ru.png', flagTitle: 'Россия'},
+                {id: 'lt', title: 'Lietuvių', name: 'Lietuvių', flagImg: 'img/lt.png', flagTitle: 'Lietuva'},
+                {id: 'en', title: 'English (UK)', name: ' English (UK)', flagImg: 'img/gb.png', flagTitle: 'United Kingdom'},
+
+            ]
         };
     }]).
     run(['$rootScope', '$location', '$translate', 'TokenService',
