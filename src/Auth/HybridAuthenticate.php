@@ -6,7 +6,7 @@ use Cake\Cache\Cache;
 use Cake\Network\Request;
 use Cake\Network\Response;
 use Cake\Utility\Security;
-use JWT;
+use Firebase\JWT\JWT;
 use stdClass;
 
 class HybridAuthenticate extends BaseAuthenticate {
